@@ -48,7 +48,6 @@ app.use((req,res,next)=>{
     next()
 })
 
-
 //ejs set paths
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
