@@ -28,6 +28,7 @@ const seedDB = async() => {
     for(let i = 0; i < 50; i++){
 
         //random properties of the camp
+        const author = '63fae3fa828ec6e9905e8114'
         const location = `${generateRand(cities).city}, ${generateRand(cities).state}`;
         const title = `${generateRand(descriptors)} ${generateRand(places)}`;
         const image = `https://source.unsplash.com/random/300x300?camping,${i}`
@@ -35,7 +36,7 @@ const seedDB = async() => {
         const price = Math.floor(Math.random() * 20) + 10;
 
         //create a new camp object and save to DB
-        const newCamp = new Campground({location, title, image, description, price});
+        const newCamp = new Campground({author, location, title, image, description, price});
         await newCamp.save();
         console.log(newCamp);
     }

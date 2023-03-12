@@ -8,7 +8,10 @@ mongoose.set('strictQuery', true);
 
 const reviewSchema = new Schema({
     text: String,
-    rating: Number
+    rating: Number,
+    author: {
+        type: Schema.Types.ObjectId, ref: 'User'
+    }
 })
 
 reviewSchema.post('findOneAndDelete', async(review) => {
