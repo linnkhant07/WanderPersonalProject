@@ -31,7 +31,7 @@
     <div class="col-6">
       <!-- review form -->
       <% if(currentUser){ %>
-      <form action="/campgrounds/<%= campground._id  %>/reviews" method="post" class="mb-3">
+      <form action="/campgrounds/<%= campground._id  %>/reviews" method="post" class="mb-3 validatedForm" novalidate>
         <h2>Leave a Review</h2>
         <div class="mb-3">
           <label for="rating" class="form-label">Rating</label>
@@ -39,7 +39,10 @@
         </div>
         <div class="mb-3">
           <label for="text" class="form-label">Review</label>
-          <textarea name="review[text]" class="form-control" id="text" cols="30" rows="3"></textarea>
+          <textarea name="review[text]" class="form-control" id="text" cols="30" rows="3" required></textarea>
+          <div class="invalid-feedback">
+            Review is empty
+          </div>
         </div>
           <button class="btn btn-success">Submit</button>
       </form>
