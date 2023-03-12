@@ -5,17 +5,17 @@ const passport = require('passport')
 const catchAsync = require('../utils/catchAsync')
 
 //CRUD
-//register form
-router.get('/register', user.renderRegisterForm)
+router.route('/register')
+.get(user.renderRegisterForm) //register form
+.post(catchAsync(user.registerUser)) //register the user
 
-//register the user
-router.post('/register', catchAsync(user.registerUser))
 
-//login form
-router.get('/login', user.renderLogInForm)
-
-//login the user
-router.post('/login', passport.authenticate('local', {failureFlash: true, failureRedirect: '/login', keepSessionInfo: true}),  user.logInUser)
+router.route('/login')
+.get(user.renderLogInForm) //login form
+.post(
+    passport.authenticate('local', {failureFlash: true, failureRedirect: '/login', keepSessionInfo: true}),  
+    user.logInUser
+    ) //login the user
 
 router.get('/logout', user.logOutUser)
 

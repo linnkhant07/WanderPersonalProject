@@ -2,30 +2,33 @@ const express = require('express')
 const router = express.Router()
 const Campground = require('../models/campground')
 const campground = require('../controllers/campgrounds')
+const multer = require('multer')
 const catchAsync = require('../utils/catchAsync')
 const {campgroundSchema} = require('../schemas')
 const {isLoggedIn, isAuthor, validateCampground} = require('../middleware')
 
+const upload = multer({dest: 'uploads/'})
 //CRUD
-//Index Route
-router.get("/", catchAsync(campground.index))
+router.route("/")
+.get(catchAsync(campground.index)) //Index Route
+//.post(validateCampground, isLoggedIn, catchAsync(campground.createCampground)) //Create route
+.post(upload.array('campground[image]'), (req, res)=> {
+    console.log(req.body, req.files)
+    res.send("SIuuuu")
+
+}) //testing upload
 
 //New Route
 router.get("/new", isLoggedIn, campground.renderNewForm)
 
-//Create Route
-router.post("/", validateCampground, isLoggedIn, catchAsync(campground.createCampground))
-
 //Show Route
-router.get("/:id", catchAsync(campground.showCampground))
+router.route("/:id")
+.get(catchAsync(campground.showCampground))
+.put(isLoggedIn, isAuthor, catchAsync(campground.updateCampground)) //update route
+.delete(isLoggedIn, isAuthor, catchAsync(campground.deleteCampground)) //delete route
 
 //Edit Route
 router.get("/:id/edit", isLoggedIn, isAuthor, catchAsync(campground.renderEditForm))
 
-//Update Route
-router.put("/:id", isLoggedIn, isAuthor, catchAsync(campground.updateCampground))
-
-//Delete Route
-router.delete("/:id", isLoggedIn, isAuthor, catchAsync())
 
 module.exports = router
