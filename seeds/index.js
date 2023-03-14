@@ -34,9 +34,19 @@ const seedDB = async() => {
         const image = `https://source.unsplash.com/random/300x300?camping,${i}`
         const description = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus natus cupiditate maxime! Commodi aperiam in consequatur. Asperiores consectetur incidunt quod enim beatae molestiae, a doloremque ratione tenetur quis dicta corrupti!";
         const price = Math.floor(Math.random() * 20) + 10;
+        const  images = [
+          {
+            url: 'https://res.cloudinary.com/dznf6c94r/image/upload/v1678773883/YelpCamp/e7en7k6jwsvv8rf4bmmv.webp',
+            filename : 'YelpCamp/e7en7k6jwsvv8rf4bmmv',
 
+          },
+          {
+            url: 'https://res.cloudinary.com/dznf6c94r/image/upload/v1678773882/YelpCamp/h4nnnxs55cvfoqt7qb3l.webp',
+            filename: 'YelpCamp/h4nnnxs55cvfoqt7qb3l',
+          }
+        ]
         //create a new camp object and save to DB
-        const newCamp = new Campground({author, location, title, image, description, price});
+        const newCamp = new Campground({author, location, title, images, description, price});
         await newCamp.save();
         console.log(newCamp);
     }

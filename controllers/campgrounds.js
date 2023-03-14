@@ -14,6 +14,7 @@ module.exports.createCampground = async(req,res)=>{
     //if(!req.body.campground) throw new ExpressError("Invalid Campground Data", 400)
     //create a new object with form details
     const campground = new Campground(req.body.campground);
+    campground.images = req.files.map(f => ({url: f.path, filename: f.filename}))
     campground.author = req.user._id;
     await campground.save();
     console.log(campground);
@@ -57,7 +58,18 @@ module.exports.updateCampground = async(req,res)=>{
     const {id} = req.params;
 
     //update in the db
-    const campground = await Campground.findByIdAndUpdate(id, {...req.body.campground})
+    const images = req.files.map(f => ({url: f.path, filename: f.filename}))
+    const campground = await Campground.findByIdAndUpdate(
+        id,
+        { $push: { images: { $each: images } }, ...req.body.campground },
+        { new: true, runValidators: true }
+      );
+
+    /*
+    const images = req.files.map(f => ({url: f.path, filename: f.filename}))
+    campground.images.push(...images)
+    await campground.save()*/
+
     if(!campground){
         req.flash("error", "Cannot find campground")
         return res.redirect("/campgrounds")
