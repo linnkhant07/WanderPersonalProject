@@ -27,7 +27,9 @@ module.exports.campgroundSchema = Joi.object({
         //image: Joi.string().required(),
         description: Joi.string()
 
-    }).required() //campground as a key is also required
+    }).required(), //campground as a key is also required
+
+    deleteImages: Joi.array()
 })
 
 module.exports.reviewSchema = Joi.object({
