@@ -1,8 +1,14 @@
 <%- layout('layouts/boilerplate.ejs')  %> 
 <link rel="stylesheet" href="/css/starability.css">
 
+<script>
+  const mapboxToken = '<%= process.env.MAPBOX_token  %>'
+</script>
+
+
 <div class="row">
     <div class="col-6">
+      <div id="map" style="width: 400px; height: 300px;">Map is supposed to be here</div>
       <div id="campgroundImages" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <% campground.images.forEach((img, i) => { %>
@@ -96,3 +102,6 @@
         </div>
     </div>
 </div>
+
+<script src="/javascripts/showMap.js"></script>
+
