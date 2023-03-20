@@ -1,6 +1,6 @@
 mapboxgl.accessToken = mapboxToken;
 const map = new mapboxgl.Map({
-container: 'map', // container ID
+container: 'mini-map', // container ID
 // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
 style: 'mapbox://styles/mapbox/satellite-streets-v12', // style URL
 center: campground.geometry.coordinates, // starting position [lng, lat]
@@ -14,5 +14,6 @@ const marker = new mapboxgl.Marker()
     `<b>${campground.title}</b> <p>${campground.location}</p>`
 ))
 .addTo(map);
+map.addControl(new mapboxgl.NavigationControl());
 
 //console.log(campground.geometry.coordinates)

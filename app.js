@@ -95,7 +95,7 @@ app.listen(3000, ()=>{
 
 //default route
 app.get("/", (req,res)=>{
-    res.redirect("/campgrounds");
+    res.render("home");
 })
 
 
