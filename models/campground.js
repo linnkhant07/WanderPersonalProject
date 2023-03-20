@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { campgroundSchema } = require('../schemas');
+const opts = { toJSON: { virtuals: true } };
 
 //strictQuery - only the specified fields in the Schema will be accepted
 //to remove depreciation
@@ -54,6 +55,12 @@ const CampgroundSchema = new Schema({
     reviews: [
         {type: Schema.Types.ObjectId, ref: 'Review'}
     ]
+}, opts)
+
+CampgroundSchema.virtual('properties.popUpMarkup').get(function(){
+    return `<strong><a href ='/campgrounds/${this._id}'>${this.title}</a></strong>
+    <p>${this.description.substring(0, 30)} ...</p>
+    `
 })
 
 CampgroundSchema.post('findOneAndDelete', async (camp)=>{

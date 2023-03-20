@@ -27,13 +27,15 @@ const seedDB = async() => {
     //randomly add 50 campgrounds
     for(let i = 0; i < 50; i++){
 
+        const randCity = generateRand(cities)
         //random properties of the camp
         const author = '63fae3fa828ec6e9905e8114'
-        const location = `${generateRand(cities).city}, ${generateRand(cities).state}`;
+        const location = `${randCity.city}, ${randCity.state}`;
         const title = `${generateRand(descriptors)} ${generateRand(places)}`;
         const image = `https://source.unsplash.com/random/300x300?camping,${i}`
         const description = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus natus cupiditate maxime! Commodi aperiam in consequatur. Asperiores consectetur incidunt quod enim beatae molestiae, a doloremque ratione tenetur quis dicta corrupti!";
         const price = Math.floor(Math.random() * 20) + 10;
+        const geometry = { type: 'Point', coordinates: [ `${randCity.longitude}`, `${randCity.latitude}` ] };
         const  images = [
           {
             url: 'https://res.cloudinary.com/dznf6c94r/image/upload/v1678773883/YelpCamp/e7en7k6jwsvv8rf4bmmv.webp',
@@ -46,7 +48,7 @@ const seedDB = async() => {
           }
         ]
         //create a new camp object and save to DB
-        const newCamp = new Campground({author, location, title, images, description, price});
+        const newCamp = new Campground({author, geometry, location, title, images, description, price});
         await newCamp.save();
         console.log(newCamp);
     }
