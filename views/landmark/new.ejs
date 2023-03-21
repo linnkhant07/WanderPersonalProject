@@ -3,10 +3,10 @@
 <div class="row">
     <h1 class="text-center">New Landmark</h1>
     <div class="col-6 offset-3">
-        <form action="/campgrounds" method="POST" class="validatedForm" novalidate enctype="multipart/form-data">
+        <form action="/landmarks" method="POST" class="validatedForm" novalidate enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label"  for="title">Title: </label>
-                <input class="form-control" id="title" type="text" name="campground[title]" required>
+                <input class="form-control" id="title" type="text" name="landmark[title]" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -16,16 +16,16 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="location">Location: </label>
-                <input class="form-control" id="location" type="text" name="campground[location]" required>
+                <input class="form-control" id="location" type="text" name="landmark[location]" required>
                 <div class="invalid-feedback">
                     Location cannot be invalid
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="price">Price: </label>
+                <label class="form-label" for="price">Estimated cost for one night stay: </label>
                 <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" id="price" class="form-control" name="campground[price]" placeholder="0.00" required>
+                    <input type="text" id="price" class="form-control" name="landmark[price]" placeholder="0.00" required>
                     <div class="invalid-feedback">
                         Price cannot be invalid
                     </div>
@@ -33,24 +33,25 @@
             </div>
             <div class="mb-3">
                 <div class="mb-3">
-                    <label for="campground[image]" class="form-label">Upload images: </label>
-                    <input class="form-control" type="file" id="campground[image]" name="campground[image]"multiple>
+                    <label for="landmark[image]" class="form-label">Upload images: </label>
+                    <input class="form-control" type="file" id="landmark[image]" name="landmark[image]"multiple>
                 </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="description">Description: </label>
-                <textarea class="form-control" name="campground[description]" id="description" cols="30" rows="5" required></textarea>
+                <textarea class="form-control" name="landmark[description]" id="description" cols="30" rows="5" required></textarea>
                 <div class="invalid-feedback">
                     Description cannot be invalid
                 </div>
             </div>
             <div class="mb-3">
+                <a class="btn btn-danger ms-0" href="/landmarks">Back to Homepage</a>
                 <button class="btn btn-success">Save Landmark</button>
             </div>
         </form>        
-        <footer>
-            <a href="/campgrounds">Back to Home Page</a>
-        </footer>
+        <!-- <footer>
+            <a href="/landmarks">Back to Home Page</a>
+        </footer> -->
     </div>
     
 </div>

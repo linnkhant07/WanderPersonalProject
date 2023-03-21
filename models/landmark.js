@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { campgroundSchema } = require('../schemas');
+//const { landmarkSchema } = require('../schemas');
 const opts = { toJSON: { virtuals: true } };
 
 //strictQuery - only the specified fields in the Schema will be accepted
@@ -20,7 +20,7 @@ ImageSchema.virtual('thumbnail').get(function(){
     return this.url.replace('/upload', '/upload/w_200')
 })
 
-const CampgroundSchema = new Schema({
+const landmarkSchema = new Schema({
     title: {
         type: String,
             required: true
@@ -57,19 +57,19 @@ const CampgroundSchema = new Schema({
     ]
 }, opts)
 
-CampgroundSchema.virtual('properties.popUpMarkup').get(function(){
-    return `<strong><a href ='/campgrounds/${this._id}'>${this.title}</a></strong>
+landmarkSchema.virtual('properties.popUpMarkup').get(function(){
+    return `<strong><a href ='/landmarks/${this._id}'>${this.title}</a></strong>
     <p>${this.description.substring(0, 30)} ...</p>
     `
 })
 
-CampgroundSchema.post('findOneAndDelete', async (camp)=>{
+landmarkSchema.post('findOneAndDelete', async (camp)=>{
     //if there is any camp
     if(camp.reviews.length){
         const res = await Review.deleteMany({_id: {$in: camp.reviews}})
     }
 })
 
-const Campground = mongoose.model('Campground', CampgroundSchema);
+const Landmark = mongoose.model('Landmark', landmarkSchema);
 
-module.exports = Campground;
+module.exports = Landmark;

@@ -2,10 +2,10 @@
 <div class="row">
     <h1 class="text-center">Edit Landmark</h1>
     <div class="col-6 offset-3">
-        <form action="/campgrounds/<%= campground._id %>?_method=PUT " method="POST" class="validatedForm" novalidate enctype="multipart/form-data">
+        <form action="/landmarks/<%= landmark._id %>?_method=PUT " method="POST" class="validatedForm" novalidate enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label"  for="title">Title: </label>
-                <input class="form-control" id="title" type="text" name="campground[title]" value="<%= campground.title  %> " required>
+                <input class="form-control" id="title" type="text" name="landmark[title]" value="<%= landmark.title  %> " required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -15,16 +15,16 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="location">Location: </label>
-                <input class="form-control" id="location" type="text" name="campground[location]" value="<%= campground.location %> " required>
+                <input class="form-control" id="location" type="text" name="landmark[location]" value="<%= landmark.location %> " required>
                 <div class="invalid-feedback">
                     Location cannot be invalid
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="price">Price: </label>
+                <label class="form-label" for="price">Estimated cost for one night stay: </label>
                 <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" id="price" class="form-control" name="campground[price]" placeholder="0.00" value="<%= campground.price %> " required>
+                    <input type="text" id="price" class="form-control" name="landmark[price]" placeholder="0.00" value="<%= landmark.price %> " required>
                     <div class="invalid-feedback">
                         Price cannot be invalid
                     </div>
@@ -32,8 +32,8 @@
             </div>
             <div class="mb-3">
                 <div class="mb-3">
-                    <label for="campground[image]" class="form-label">Upload images: </label>
-                    <input class="form-control" type="file" id="campground[image]" name="campground[image]"multiple>
+                    <label for="landmark[image]" class="form-label">Upload images: </label>
+                    <input class="form-control" type="file" id="landmark[image]" name="landmark[image]"multiple>
                 </div>
                 <div class="invalid-feedback">
                     Image cannot be invalid
@@ -41,7 +41,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="description">Description: </label>
-                <textarea class="form-control" name="campground[description]" id="description" cols="30" rows="5" required><%= campground.description %></textarea>
+                <textarea class="form-control" name="landmark[description]" id="description" cols="30" rows="5" required><%= landmark.description %></textarea>
                 <div class="invalid-feedback">
                     Description cannot be invalid
                 </div>
@@ -49,7 +49,7 @@
             <div class="mb-3">
             <h5> Delete Images </h5>
             <div class="row row-cols-1 row-cols-md-4 g-4 mb-3">
-                <% campground.images.forEach((image, i) => { %>
+                <% landmark.images.forEach((image, i) => { %>
                     <div class="col">
                         <div class="card">
                             <img class="card-img" src="<%= image.thumbnail %>" alt="">
@@ -66,11 +66,12 @@
             
 
             <div class="mb-3">
+                <a class="btn btn-danger ms-0" href="/landmarks/<%= landmark._id %> ">Back to Landmarks</a>
                 <button class="btn btn-success">Update Landmark</button>
             </div>
         </form>        
-        <footer>
-            <a href="/campgrounds/<%= campground._id %> ">Back to Landmarks</a>
-        </footer>
+        <!-- <footer>
+            <a class="btn btn-primary mb-3" href="/landmarks/<%= landmark._id %> ">Back to Landmarks</a>
+        </footer> -->
 </div>
 

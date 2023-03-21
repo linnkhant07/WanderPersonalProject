@@ -10,17 +10,17 @@ const path = require('path')
 const ejsMate = require('ejs-mate')
 const ExpressError = require('./utils/ExpressError')
 const catchAsync = require('./utils/catchAsync')
-const {campgroundSchema, reviewSchema} = require('./schemas')
+const {landmarkSchema, reviewSchema} = require('./schemas')
 const passport = require('passport')
 const localStrategy = require('passport-local')
 const User = require('./models/user')
 const session = require('express-session')
 const userRoutes = require('./routes/users')
-const campgroundRoutes = require('./routes/campgrounds')
+const landmarkRoutes = require('./routes/landmarks')
 const reviewRoutes = require("./routes/reviews")
 
 
-const dbUrl = process.env.DB_URL
+const dbUrl = 'mongodb://127.0.0.1:27017/yelp-camp'
 //'mongodb://127.0.0.1:27017/yelp-camp'
 //process.env.DB_URL
 
@@ -174,8 +174,8 @@ app.get("/", (req,res)=>{
 
 
 //CRUD 
-app.use("/campgrounds", campgroundRoutes)
-app.use("/campgrounds/:id/reviews", reviewRoutes) //for reviews
+app.use("/landmarks", landmarkRoutes)
+app.use("/landmarks/:id/reviews", reviewRoutes) //for reviews
 app.use("/", userRoutes)
 
 

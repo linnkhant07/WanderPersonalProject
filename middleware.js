@@ -1,6 +1,6 @@
-const Campground = require('./models/campground');
+const Landmark = require('./models/landmark');
 const ExpressError = require('./utils/ExpressError')
-const {campgroundSchema, reviewSchema} = require('./schemas')
+const {landmarkSchema, reviewSchema} = require('./schemas')
 const Review = require('./models/review')
 
 module.exports.isLoggedIn = (req,res,next) => {
@@ -16,10 +16,10 @@ module.exports.isLoggedIn = (req,res,next) => {
 
 module.exports.isAuthor = async (req, res, next) => {
     const {id} = req.params;
-    const campground = await Campground.findById(id);
-    if(!campground.author.equals(req.user._id)){
+    const landmark = await Landmark.findById(id);
+    if(!landmark.author.equals(req.user._id)){
         req.flash('error', 'You do not have permission to perfrom that action!')
-        return res.redirect(`/campgrounds/${id}`)
+        return res.redirect(`/landmarks/${id}`)
     }
 
     next()
@@ -30,7 +30,7 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     const review = await Review.findById(reviewId);
     if(!review.author.equals(req.user._id)){
         req.flash('error', 'You do not have permission to perfrom that action!')
-        return res.redirect(`/campgrounds/${id}`)
+        return res.redirect(`/landmarks/${id}`)
     }
 
     next()
@@ -38,10 +38,10 @@ module.exports.isReviewAuthor = async (req, res, next) => {
  
 
 //JOi validator function
-module.exports.validateCampground = (req,res,next) => {
+module.exports.validateLandmark = (req,res,next) => {
 
     //check if there is an error in the result returned
-    const { error } = campgroundSchema.validate(req.body);
+    const { error } = landmarkSchema.validate(req.body);
     if(error){
         //this step is necessary because
         //error has a property details - array of objects

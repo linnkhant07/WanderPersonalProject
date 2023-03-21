@@ -4,15 +4,15 @@
 <h1>Currently Explored Landmarks</h1>
 
 <div>
-    <a class="btn btn-primary my-3" href="/campgrounds/new">Add a New Landmark</a>
+    <a class="btn btn-primary my-3" href="/landmarks/new">Add a New Landmark</a>
 </div>
 
-<% for (let campground of campgrounds) {%> 
+<% for (let landmark of landmarks) {%> 
     <div class="card mb-3">
         <div class="row">
             <div class="col-md-4">
-                <% if(campground.images.length) {%>
-                    <img class="img-fluid" alt="" src="<%= campground.images[0].url  %> ">
+                <% if(landmark.images.length) {%>
+                    <img class="img-fluid"  alt="" src="<%= landmark.images[0].url  %> ">
                 <% } else { %>
                     <img class="img-fluid" alt="" src="https://res.cloudinary.com/dznf6c94r/image/upload/v1678912139/YelpCamp/ryi9xhrzq3ujuxsy81eb.jpg">
                 <% } %>
@@ -20,15 +20,15 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <%= campground.title  %> 
+                        <%= landmark.title  %> 
                     </h5>
                     <p class="card-text">
-                        <%= campground.description  %> 
+                        <%= landmark.description  %> 
                     </p>
                     <p class="card-text">
-                        <small class="text-secondary"><%= campground.location  %> </small>
+                        <small class="text-secondary"><%= landmark.location  %> </small>
                     </p>
-                    <a href="/campgrounds/<%= campground._id  %> " class="btn btn-primary">View <%= campground.title  %> </a>
+                    <a href="/landmarks/<%= landmark._id  %> " class="btn btn-primary">View <%= landmark.title  %> </a>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
 
 <script>
     const mapboxToken = '<%- process.env.MAPBOX_TOKEN  %>'; //to be a string
-    const campgrounds = <%-JSON.stringify(campgrounds)%>;
+    const landmarks = <%-JSON.stringify(landmarks)%>;
 </script>
 <script src="/javascripts/mapClusters.js"></script>
 

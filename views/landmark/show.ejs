@@ -1,47 +1,52 @@
 <%- layout('layouts/boilerplate.ejs')  %> 
 <link rel="stylesheet" href="/css/starability.css">
+<link rel="stylesheet" href="/css/carousel.css">
 
 <script>
   const mapboxToken = '<%- process.env.MAPBOX_TOKEN  %>'; //to be a string
-  const campground= <%- JSON.stringify(campground) %> //to be an object
+  const landmark= <%- JSON.stringify(landmark) %> //to be an object
   //turned off validate html scripts just to clear false errors
 </script>
 
 
 <div class="row">
     <div class="col-6">
-      <div id="campgroundImages" class="carousel slide" data-bs-ride="carousel">
+      <div id="landmarkImages" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <% campground.images.forEach((img, i) => { %>
+          <% landmark.images.forEach((img, i) => { %>
           <div class="carousel-item <%= i == 0 ? "active" : "" %>">
               <img class="d-block w-100" src="<%= img.url  %>" alt="Slide">
           </div>
           <% }) %>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#campgroundImages" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#landmarkImages" data-bs-slide="prev">
+          <% if(landmark.images.length > 1) {%>
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
+          <% } %>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#campgroundImages" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#landmarkImages" data-bs-slide="next">
+          <% if(landmark.images.length > 1) {%>
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
+          <% } %>
         </button>
       </div>
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title"><%= campground.title %></h5>
-              <p class="card-text"><%= campground.description %> </p>
+              <h5 class="card-title"><%= landmark.title %></h5>
+              <p class="card-text"><%= landmark.description %> </p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">posted by <%= campground.author.username  %></li>
-              <li class="list-group-item text-muted"><%= campground.location  %></li>
-              <li class="list-group-item">$<%= campground.price%>/night</li>
+              <li class="list-group-item">posted by <%= landmark.author.username  %></li>
+              <li class="list-group-item text-muted"><%= landmark.location  %></li>
+              <li class="list-group-item">$<%= landmark.price%>/night</li>
             </ul>
 
-            <% if(currentUser && campground.author.equals(currentUser._id)) {%> 
+            <% if(currentUser && landmark.author.equals(currentUser._id)) {%> 
             <div class="card-body">
-              <a href="/campgrounds/<%= campground._id  %>/edit" class="card-link btn btn-primary">Edit Details</a>
-              <form action="/campgrounds/<%= campground._id %>?_method=DELETE " class="d-inline" method="POST">
+              <a href="/landmarks/<%= landmark._id  %>/edit" class="card-link btn btn-primary">Edit Details</a>
+              <form action="/landmarks/<%= landmark._id %>?_method=DELETE " class="d-inline" method="POST">
                 <button class="btn btn-danger">Delete Landmark</button>
             </form>
             </div>
@@ -55,7 +60,7 @@
       <div id="mini-map" class="mb-2">Map is supposed to be here</div>
       <!-- review form -->
       <% if(currentUser){ %>
-      <form action="/campgrounds/<%= campground._id  %>/reviews" method="post" class="mb-3 validatedForm" novalidate>
+      <form action="/landmarks/<%= landmark._id  %>/reviews" method="post" class="mb-3 validatedForm" novalidate>
         <h2>Leave a Review</h2>
         <fieldset class="starability-basic">
           <!-- <legend>Rating:</legend> -->
@@ -84,7 +89,7 @@
 
       <div class="mb-3">
         <h3>Reviews</h3>
-          <% for(let review of campground.reviews) {%>
+          <% for(let review of landmark.reviews) {%>
             <div class="card mb-3">
               <div class="card-body">
                 <h5 class="card-title"><%= review.author.username%></h5>
@@ -94,7 +99,7 @@
                 <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->
                 <p class="card-text">Review: <%= review.text %></p>
                 <% if(currentUser && review.author.equals(currentUser._id)) {%>
-                <form action="/campgrounds/<%= campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                <form action="/landmarks/<%= landmark._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
                   <button class="btn btn-danger">Delete</button>
                 </form>
                 <% } %>

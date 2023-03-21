@@ -24,9 +24,9 @@ const extension = (joi) => ({
 })
 const Joi = BaseJoi.extend(extension)
 
-module.exports.campgroundSchema = Joi.object({
-    //campground is a key inside the object, and its properties are also objects
-    campground: Joi.object({
+module.exports.landmarkSchema = Joi.object({
+    //landmark is a key inside the object, and its properties are also objects
+    landmark: Joi.object({
         //its keys
         title: Joi.string().required().escapeHTML(),
         price: Joi.number().required().min(0),
@@ -34,7 +34,7 @@ module.exports.campgroundSchema = Joi.object({
         //image: Joi.string().required(),
         description: Joi.string().escapeHTML()
 
-    }).required(), //campground as a key is also required
+    }).required(), //landmark as a key is also required
 
     deleteImages: Joi.array()
 })
@@ -48,9 +48,9 @@ module.exports.reviewSchema = Joi.object({
 
 /*
 //joi schema validator //Joi.{data type}
-const campgroundSchema = Joi.object({
-    //campground is a key inside the object, and its properties are also objects
-    campground: Joi.object({
+const landmarkSchema = Joi.object({
+    //landmark is a key inside the object, and its properties are also objects
+    landmark: Joi.object({
         //its keys
         title: Joi.string().required(),
         price: Joi.number().required().min(0),
@@ -58,6 +58,6 @@ const campgroundSchema = Joi.object({
         image: Joi.string().required(),
         description: Joi.string()
 
-    }).required() //campground as a key is also required
+    }).required() //landmark as a key is also required
 })
 */
