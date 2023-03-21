@@ -27,7 +27,7 @@ module.exports.createCampground = async(req,res)=>{
     await campground.save();
     console.log(campground);
 
-    req.flash("success", "Campground successfully saved")
+    req.flash("success", "Landmark successfully saved")
     //redirect to show page
     res.redirect(`/campgrounds/${campground._id}`)
 }
@@ -90,7 +90,7 @@ module.exports.updateCampground = async(req,res)=>{
         req.flash("error", "Cannot find campground")
         return res.redirect("/campgrounds")
     }
-    req.flash("success", "Campground successfully updated")
+    req.flash("success", "Landmark successfully updated")
     res.redirect(`/campgrounds/${id}`)
 }
 
@@ -105,6 +105,6 @@ module.exports.deleteCampground = async(req,res)=>{
     }
 
     //redirect
-    req.flash("success", "Campground successfully deleted")
+    req.flash("success", "Landmark successfully deleted")
     res.redirect("/campgrounds")
 }
