@@ -31,7 +31,6 @@ const store = new MongoDBStore({
     touchAfter: 24 * 60 * 60
 })
 
-
 //for session
 const sessionConfig = {
     store,
