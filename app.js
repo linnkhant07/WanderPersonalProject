@@ -14,14 +14,27 @@ const {campgroundSchema, reviewSchema} = require('./schemas')
 const passport = require('passport')
 const localStrategy = require('passport-local')
 const User = require('./models/user')
-
+const session = require('express-session')
 const userRoutes = require('./routes/users')
 const campgroundRoutes = require('./routes/campgrounds')
 const reviewRoutes = require("./routes/reviews")
 
+
+const dbUrl = 'mongodb://127.0.0.1:27017/yelp-camp'
+//'mongodb://127.0.0.1:27017/yelp-camp'
+//dbUrl
+
+const MongoDBStore = require("connect-mongo")
+const store = new MongoDBStore({
+    mongoUrl: dbUrl,
+    secret: 'siuuuu',
+    touchAfter: 24 * 60 * 60
+})
+
+
 //for session
-const session = require('express-session')
 const sessionConfig = {
+    store,
     name: 'yourSession',
     secret: "siuuuucret", 
     httpOnly: true,
@@ -135,10 +148,8 @@ app.use(
 //connect to mongoDB  using mongoose
 const mongoose = require("mongoose");
 
-const dbUrl = process.env.DB_URL
-//'mongodb://127.0.0.1:27017/yelp-camp'
-//dbUrl
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
+
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection; //fancier, cleaner and to close the connection in the future
 //we can do usual things too - this is just another way ig
