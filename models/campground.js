@@ -67,7 +67,6 @@ CampgroundSchema.post('findOneAndDelete', async (camp)=>{
     //if there is any camp
     if(camp.reviews.length){
         const res = await Review.deleteMany({_id: {$in: camp.reviews}})
-        console.log(res)
     }
 })
 
