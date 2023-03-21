@@ -15,7 +15,7 @@ module.exports.registerUser = async (req,res,next)=>{
                 return next(err)
             
             req.flash('success', 'Welcome to campgrounds!')
-            res.redirect("/campgrounds")
+            return res.redirect("/campgrounds")
         })
 
     } catch (error) {
