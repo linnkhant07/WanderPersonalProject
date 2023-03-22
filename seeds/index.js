@@ -3,9 +3,14 @@ const cities = require('./cities')
 const landmarks = require('./landmarks')
 const {descriptors, places} = require("./seedHelpers")
 
+
+const dbUrl = "mongodb+srv://lkty07:kXJwYKXWzfhbfd46@cluster0.tzknyeu.mongodb.net/?retryWrites=true&w=majority"
+//'mongodb://127.0.0.1:27017/yelp-camp'
+//process.env.DB_URL
+
 //connect to mongoDB  using mongoose
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection; //fancier, cleaner and to close the connection in the future
 //we can do usual things too - this is just another way ig
@@ -61,7 +66,7 @@ const seedDBLandmark = async() => {
 
   for(let landmark of landmarks){
     //random properties of the camp
-    const author = '63fae3fa828ec6e9905e8114'
+    const author = '6419596c827a5ffad61eaa54'
     const location = `${landmark.location}`;
     const title = `${landmark.title}`;
     const description = `${landmark.description}`;
