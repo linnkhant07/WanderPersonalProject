@@ -63,10 +63,10 @@ landmarkSchema.virtual('properties.popUpMarkup').get(function(){
     `
 })
 
-landmarkSchema.post('findOneAndDelete', async (camp)=>{
-    //if there is any camp
-    if(camp.reviews.length){
-        const res = await Review.deleteMany({_id: {$in: camp.reviews}})
+landmarkSchema.post('findOneAndDelete', async (landmark)=>{
+    //if there is any review
+    if(landmark.reviews.length){
+        const res = await Review.deleteMany({_id: {$in: landmark.reviews}})
     }
 })
 
