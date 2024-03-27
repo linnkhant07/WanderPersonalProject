@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to Wander! Our full-stack website allows users to explore and discover landmarks posted by other users. Users can register, authenticate, and perform CRUD (Create, Read, Update, Delete) functions on landmarks and review comments. With a user-friendly interface and intuitive design, Wander offers a seamless experience for discovering new places and sharing experiences with others. 
+Wander, a full-fledged application allows users to explore and discover landmarks posted by other users. Users can register, authenticate, and perform CRUD (Create, Read, Update, Delete) functions on landmarks and review comments. With a user-friendly interface and intuitive design, Wander offers a seamless experience for discovering new places and sharing experiences with others. 
 
 ## Features
 
