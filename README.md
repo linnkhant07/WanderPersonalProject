@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to Noteify Me! Our platform revolutionizes studying by turning your school notes into interactive quizzes with the help of OpenAI. Create an account, store your notes from different subjects, and receive daily quiz questions on Discord, get instant feedback, and enhance your learning through active recall. Say goodbye to passive studying and hello to effective learning with Noteify Me!
+Welcome to Noteify Me! Our platform revolutionizes studying by turning your school notes into interactive quizzes with the help of OpenAI. Create an account on our website, store your notes from different subjects, and receive daily quiz questions on Discord, get instant feedback, and enhance your learning through active recall. Say goodbye to passive studying and hello to effective learning with Noteify Me!
 
 ## Table of Contents
 
