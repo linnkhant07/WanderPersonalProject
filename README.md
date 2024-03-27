@@ -6,6 +6,10 @@ Welcome to Noteify Me! Our platform revolutionizes studying by turning your scho
 
 This is a project that my team built for the <b>UCLA Hacks 2023</b> which lasted 36 hours, and I took charge of the whole backend process from the website to database and the Discord bot.
 
+## Demo
+
+<demo video will be uploaded here soon>
+
 ## Features
 
 - **Interactive Quizzes:** Your school notes transformed into interactive quizzes.
