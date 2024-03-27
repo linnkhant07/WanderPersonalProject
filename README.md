@@ -34,7 +34,8 @@ To install and run Noteify Me locally, follow these steps:
 
 ## Usage
 
-<b>Our website is currently not hosted right now</b>
+<b>Our website is currently not hosted right now!</b>
+
 To use Noteify Me, follow these steps:
 
 1. Create an account on the Noteify Me website.
