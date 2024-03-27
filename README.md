@@ -8,7 +8,7 @@ This is a project that my team built for the <b>UCLA Hacks 2023</b> which lasted
 
 ## Demo
 
-<demo video will be uploaded here soon>
+====demo video will be uploaded here soon====
 
 ## Features
 
