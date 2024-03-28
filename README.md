@@ -21,6 +21,11 @@ Wander, a full-fledged application allows users to explore and discover landmark
 * Mapbox
 * Reddis
 
+## Demo
+
+![WanderOverview](https://github.com/linnkhant07/WanderPersonalProject/assets/68958137/38310ae5-8b00-4da1-b659-1da55b7f459d)
+
+
  ## Usage
 
 To use Wander, follow these steps:
